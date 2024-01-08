@@ -1,0 +1,15 @@
+{
+    "build": {
+        // Path is relative to the devcontainer.json file.
+        "dockerfile": "Dockerfile",
+        "args": {
+            "USER_UID": "1000"
+        }
+    },
+    "mounts": [
+        "type=bind,source=/home/${localEnv:USER}/.ssh,target=/home/dev/.ssh,readonly",
+        "type=bind,source=/home/${localEnv:USER}/.gitconfig,target=/home/dev/.gitconfig,readonly"
+    ],
+    "runArgs": ["-v", "/dev:/dev", "-v", "/home/${localEnv:USER}/kirkstone-build:/home/dev/build"],
+    "remoteUser": "dev"
+}
